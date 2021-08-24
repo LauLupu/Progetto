@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\inventoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +25,6 @@ Route::get('/home', function () {
 Route::get('/navbar', function () {
     return view('navbar');
 });
-  
-Route::resource('products', ProductController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

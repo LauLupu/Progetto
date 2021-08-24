@@ -29,8 +29,8 @@
 <body>
 <nav class="navbar">
     <ol>
-    <button type="button" class="btn btn-primary"><li><a href="">Laravel</a></li></button>
-    <button type="button" class="btn btn-primary"><li><a href="">About</a></li></button>
+    <button type="button" class="btn btn-primary"><li><a href="/">Homepage</a></li></button>
+    <button type="button" class="btn btn-primary"><li><a href="/About">About</a></li></button>
     <button type="button" class="btn btn-primary"><li><a href="">Login</a></li></button>
     <button type="button" class="btn btn-primary"><li><a href="">Comanda</a></li></button>
     </ol>

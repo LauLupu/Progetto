@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\inventoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +18,21 @@ Route::get('/', function () {
     return view('Welcome');
 });
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/navbar', function () {
-    return view('navbar');
+Route::get('/About', function () {
+    return view('About');
 });
-  
-Route::resource('products', ProductController::class);
+
+Route::get('/comanda', function () {
+    return view('Comanda');
+});
+
+Route::resource('gusturi','App\Http\Controllers\ComandaController');
+
+Route::get('list',[inventoryController::class,'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

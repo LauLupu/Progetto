@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <title>Home</title>
-    <style>
+@extends('products.layout')
+<style>
       body {
         background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/5b2af637672681.57481ee4280f7.jpg);
         background-size: cover;
+        color: white;
       }
     </style>
 </head>
@@ -27,7 +20,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">Laravel</a>
+          <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,6 +43,56 @@
       </form>
     </div>
   </div>
-</nav>
-</body>
-</html>
+</nav>     
+@section('content')
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Prodotti</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('products.create') }}"> Crea Nuovo Prodotto</a>
+            </div>
+        </div>
+    </div>
+    
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+     
+    <table class="table table-bordered">
+        <tr>
+            <th>No</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Details</th>
+            <th width="280px">Action</th>
+        </tr>
+        @foreach ($products as $product)
+        <tr>
+            <td>{{ ++$i }}</td>
+            <td><img src="/image/{{ $product->image }}" width="100px"></td>
+            <td>{{ $product->name }}</td>
+            <td>{{ $product->detail }}</td>
+            <td>
+                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+     
+                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Mostra</a>
+      
+                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Modifica</a>
+     
+                    @csrf
+                    @method('DELETE')
+        
+                    <button type="submit" class="btn btn-danger">Cancella</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+    
+    {!! $products->links() !!}
+        
+@endsection

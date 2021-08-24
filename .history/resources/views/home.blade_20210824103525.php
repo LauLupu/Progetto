@@ -11,6 +11,7 @@
       body {
         background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/5b2af637672681.57481ee4280f7.jpg);
         background-size: cover;
+        
       }
     </style>
 </head>
@@ -27,7 +28,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">Laravel</a>
+          <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

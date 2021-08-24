@@ -17,3 +17,8 @@
         </div>
     </div>
 </x-app-layout>
+<style>
+    body {
+        background-color: black;
+    }
+</style>
